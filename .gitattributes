@@ -1,0 +1,5 @@
+*.py text eol=lf
+*.tpl text eol=lf
+*.yml text eol=lf
+bin/f2b-tool text eol=lf
+fail2ban-comprehensive-guide.md -text

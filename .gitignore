@@ -1,0 +1,22 @@
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+
+# Local credentials and operational data
+.env
+.env.*
+!.env.example
+*.log
+*.sqlite3
+*.sqlite3-*
+
+# Local setup plans and Python caches
+.f2b-toolkit/
+.validation/
+__pycache__/
+*.py[cod]

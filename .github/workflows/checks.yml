@@ -1,0 +1,26 @@
+name: Toolkit checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit and recovery tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Install distribution packages on the disposable runner
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fail2ban python3-systemd
+          sudo systemctl stop fail2ban
+      - name: Parse generated configurations without applying firewall rules
+        run: python3 tests/validate_linux.py
